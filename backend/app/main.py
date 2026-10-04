@@ -9,6 +9,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 from app.api.dependencies import limiter
+from app.api.v1.analytics import router as analytics_router
 from app.api.v1.auth import router as auth_router
 from app.api.v1.customers import router as customers_router
 from app.api.v1.plans import router as plans_router
@@ -81,6 +82,7 @@ def create_app() -> FastAPI:
     application.include_router(plans_router, prefix="/api/v1")
     application.include_router(subscriptions_router, prefix="/api/v1")
     application.include_router(transactions_router, prefix="/api/v1")
+    application.include_router(analytics_router, prefix="/api/v1")
 
     return application
 
